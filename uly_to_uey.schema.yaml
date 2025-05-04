@@ -1,0 +1,79 @@
+﻿# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: uly_to_uey
+  name: Uyghurche Kona Yëziq # ئۇيغۇرچە كونا يېزىق
+  version: "0.0"
+  author:
+    - Utonai
+  description: |
+    基于拉丁维吾尔文输入传统维吾尔文的 Rime 输入方案
+
+    字母键位按照现行维吾尔文拉丁化方案安排
+    其中对应拉丁维文二合字母和附标字母的字母键位为其首字母的大写
+    （比如 'G' => 'gh' => 'غ'，'E' => 'ë' => 'ې'）
+    元音字母的键位不包含 'ئ'，可用 'v' 输入 'ئ'
+    可用 'L' 输入 'لا' 合字
+    可用没有被占用的 'c' 代替 'C' 输入 'چ'
+
+engine:
+  processors:
+    - ascii_composer
+    - punctuator
+    - express_editor
+  segmentors:
+    - punct_segmentor
+  translators:
+    - punct_translator
+
+punctuator:
+  half_shape:
+    "a" : ا
+    "e" : ە
+    "b" : ب
+    "p" : پ
+    "t" : ت
+    "j" : ج
+    "c" : چ
+    "C" : چ
+    "x" : خ
+    "d" : د
+    "r" : ر
+    "z" : ز
+    "Z" : ژ
+    "s" : س
+    "S" : ش
+    "G" : غ
+    "f" : ف
+    "q" : ق
+    "k" : ك
+    "g" : گ
+    "N" : ڭ
+    "l" : ل
+    "m" : م
+    "n" : ن
+    "h" : ھ
+    "o" : و
+    "u" : ۇ
+    "O" : ۆ
+    "U" : ۈ
+    "w" : ۋ
+    "E" : ې
+    "i" : ى
+    "y" : ي
+    "v" : ئ
+    "L" : لا
+    "," : ،
+    ";" : ؛
+    "?" : ؟
+    "_" : –  # En Dash
+    # 下面这些引号在右往左文本中输入会自动换向
+    # 比如看起来像 '»' 的东西实际上的码位依然还是 '«'
+    '"' : { pair: [ "«", "»" ] }
+    "'" : { pair: [ "‹", "›" ] }
+    # 备用
+    "<" : »
+    ">" : «
+    # "{" : ›
+    # "}" : ‹
